@@ -8,7 +8,7 @@ export default function Footer() {
     <Box
       component="footer"
       sx={{
-        py: 6,
+        py: 4,
         px: 2,
         mt: 'auto',
         backgroundColor: 'background.paper',
@@ -27,13 +27,13 @@ export default function Footer() {
           }}
         >
           <Box sx={{ textAlign: { xs: 'center', sm: 'left' } }}>
-            <Typography variant="h6" gutterBottom sx={{ fontWeight: 600 }}>
+            <Typography variant="h6" gutterBottom sx={{ fontWeight: 600, fontSize: '1rem' }}>
               Jeffrey Shen
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.8rem' }}>
               CS / ECE @ Carnegie Mellon University
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.8rem' }}>
               © {currentYear} Jeffrey Shen. All rights reserved.
             </Typography>
           </Box>

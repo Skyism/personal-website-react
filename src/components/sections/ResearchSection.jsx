@@ -26,13 +26,14 @@ export default function ResearchSection() {
   };
 
   return (
-    <Box id="research" sx={{ py: 8 }}>
+    <Box id="research" sx={{ py: 5 }}>
       <Container maxWidth="lg">
         <AnimatedSection>
-          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, mb: 2 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, mb: 1.5 }}>
             <Typography
-              variant="h2"
+              variant="h3"
               sx={{
+                fontSize: { xs: '1.5rem', md: '1.75rem' },
                 background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
@@ -52,17 +53,17 @@ export default function ResearchSection() {
             </IconButton>
           </Box>
           <Typography
-            variant="body1"
+            variant="body2"
             color="text.secondary"
             textAlign="center"
-            sx={{ mb: 4 }}
+            sx={{ mb: 3, fontSize: '0.875rem' }}
           >
             Contributing to machine learning and accessibility research
           </Typography>
         </AnimatedSection>
 
         <Collapse in={expanded} timeout="auto">
-          <Grid container spacing={4}>
+          <Grid container spacing={2}>
           {research.map((item, index) => (
             <Grid item xs={12} md={6} key={item.id}>
               <AnimatedSection delay={index * 0.1}>
@@ -81,13 +82,13 @@ export default function ResearchSection() {
                     },
                   }}
                 >
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Box sx={{ display: 'flex', alignItems: 'flex-start', mb: 2 }}>
+                  <CardContent sx={{ flexGrow: 1, p: 2 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'flex-start', mb: 1.5 }}>
                       <Box
                         sx={{
-                          mr: 2,
-                          p: 1.5,
-                          borderRadius: 2,
+                          mr: 1.5,
+                          p: 1,
+                          borderRadius: 1.5,
                           background:
                             'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
                           display: 'flex',
@@ -95,38 +96,39 @@ export default function ResearchSection() {
                           justifyContent: 'center',
                         }}
                       >
-                        <ScienceIcon sx={{ color: 'white', fontSize: 28 }} />
+                        <ScienceIcon sx={{ color: 'white', fontSize: 22 }} />
                       </Box>
                       <Box sx={{ flexGrow: 1 }}>
                         <Typography
-                          variant="h5"
+                          variant="h6"
                           component="h3"
                           fontWeight={600}
                           gutterBottom
+                          sx={{ fontSize: '1rem' }}
                         >
                           {item.title}
                         </Typography>
-                        <Typography variant="body1" color="primary.main" fontWeight={600}>
+                        <Typography variant="body2" color="primary.main" fontWeight={600} sx={{ fontSize: '0.875rem' }}>
                           {item.lab || item.institution}
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.8rem' }}>
                           {item.period}
                         </Typography>
                       </Box>
                     </Box>
 
-                    <Typography variant="body2" color="text.secondary" paragraph>
+                    <Typography variant="body2" color="text.secondary" paragraph sx={{ fontSize: '0.85rem', mb: 1 }}>
                       {item.description}
                     </Typography>
 
-                    <Box component="ul" sx={{ pl: 2, mb: 2 }}>
+                    <Box component="ul" sx={{ pl: 2, mb: 1.5 }}>
                       {item.responsibilities.slice(0, 2).map((resp, idx) => (
                         <Typography
                           key={idx}
                           component="li"
                           variant="body2"
                           color="text.secondary"
-                          sx={{ mb: 0.5 }}
+                          sx={{ mb: 0.25, fontSize: '0.85rem' }}
                         >
                           {resp}
                         </Typography>
@@ -136,8 +138,8 @@ export default function ResearchSection() {
                     {item.publication && (
                       <Box
                         sx={{
-                          p: 2,
-                          mb: 2,
+                          p: 1.5,
+                          mb: 1.5,
                           borderRadius: 2,
                           backgroundColor: (theme) =>
                             theme.palette.mode === 'light'
@@ -148,19 +150,19 @@ export default function ResearchSection() {
                           gap: 1,
                         }}
                       >
-                        <ArticleIcon sx={{ color: 'primary.main' }} />
+                        <ArticleIcon sx={{ color: 'primary.main', fontSize: 18 }} />
                         <Box>
-                          <Typography variant="body2" fontWeight={600}>
+                          <Typography variant="body2" fontWeight={600} sx={{ fontSize: '0.85rem' }}>
                             Published in {item.publication.journal}
                           </Typography>
-                          <Typography variant="caption" color="text.secondary">
+                          <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.7rem' }}>
                             {item.publication.year}
                           </Typography>
                         </Box>
                       </Box>
                     )}
 
-                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, mb: 2 }}>
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, mb: 1.5 }}>
                       {item.technologies.slice(0, 6).map((tech) => (
                         <Chip
                           key={tech}
@@ -181,40 +183,40 @@ export default function ResearchSection() {
                     <Box
                       sx={{
                         display: 'flex',
-                        gap: 2,
+                        gap: 1.5,
                         flexWrap: 'wrap',
-                        mt: 2,
-                        pt: 2,
+                        mt: 1.5,
+                        pt: 1.5,
                         borderTop: '1px solid',
                         borderColor: 'divider',
                       }}
                     >
                       {item.impact.dataPoints && (
                         <Box>
-                          <Typography variant="h6" color="primary.main" fontWeight={700}>
+                          <Typography variant="body1" color="primary.main" fontWeight={700} sx={{ fontSize: '0.95rem' }}>
                             {item.impact.dataPoints}
                           </Typography>
-                          <Typography variant="caption" color="text.secondary">
+                          <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.7rem' }}>
                             Data Points
                           </Typography>
                         </Box>
                       )}
                       {item.impact.accuracy && (
                         <Box>
-                          <Typography variant="h6" color="primary.main" fontWeight={700}>
+                          <Typography variant="body1" color="primary.main" fontWeight={700} sx={{ fontSize: '0.95rem' }}>
                             {item.impact.accuracy}
                           </Typography>
-                          <Typography variant="caption" color="text.secondary">
+                          <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.7rem' }}>
                             Accuracy
                           </Typography>
                         </Box>
                       )}
                       {item.impact.frequency && (
                         <Box>
-                          <Typography variant="h6" color="primary.main" fontWeight={700}>
+                          <Typography variant="body1" color="primary.main" fontWeight={700} sx={{ fontSize: '0.95rem' }}>
                             {item.impact.frequency}
                           </Typography>
-                          <Typography variant="caption" color="text.secondary">
+                          <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.7rem' }}>
                             Sensor Freq
                           </Typography>
                         </Box>

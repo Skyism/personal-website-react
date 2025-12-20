@@ -9,7 +9,7 @@ export default function HeroAboutSection() {
     <Box
       id="hero"
       sx={{
-        py: { xs: 6, md: 8 },
+        py: { xs: 4, md: 5 },
         backgroundColor: 'background.default',
         position: 'relative',
       }}
@@ -21,7 +21,7 @@ export default function HeroAboutSection() {
             display: 'flex',
             flexDirection: { xs: 'column', md: 'row' },
             alignItems: { xs: 'center', md: 'flex-start' },
-            gap: { xs: 3, md: 4 },
+            gap: { xs: 2, md: 3 },
           }}
         >
           {/* Left: Avatar */}
@@ -34,14 +34,14 @@ export default function HeroAboutSection() {
               src={personalInfo.profileImage}
               alt={personalInfo.name}
               sx={{
-                width: { xs: 100, md: 120 },
-                height: { xs: 100, md: 120 },
-                border: '3px solid',
+                width: { xs: 80, md: 100 },
+                height: { xs: 80, md: 100 },
+                border: '2px solid',
                 borderColor: 'primary.main',
                 boxShadow: (theme) =>
                   theme.palette.mode === 'light'
-                    ? '0 6px 24px rgba(156, 39, 176, 0.3)'
-                    : '0 6px 24px rgba(171, 71, 188, 0.4)',
+                    ? '0 4px 16px rgba(156, 39, 176, 0.3)'
+                    : '0 4px 16px rgba(171, 71, 188, 0.4)',
               }}
             />
           </motion.div>
@@ -54,28 +54,28 @@ export default function HeroAboutSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <Typography
-                variant="h2"
+                variant="h3"
                 gutterBottom
                 sx={{
                   background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
-                  mb: 1,
-                  fontSize: { xs: '2rem', md: '2.5rem' },
+                  mb: 0.75,
+                  fontSize: { xs: '1.5rem', md: '1.75rem' },
                 }}
               >
-                Hi, I'm {personalInfo.name.split(' ')[0]}
+                Hi, I'm {personalInfo.name.split(' ')[0]}, interested in AI, cloud, and full-stack.
               </Typography>
               <Typography
-                variant="h5"
+                variant="h6"
                 color="text.primary"
                 gutterBottom
                 fontWeight={600}
-                sx={{ mb: 0.5 }}
+                sx={{ mb: 0.5, fontSize: '1rem' }}
               >
                 {personalInfo.title}
               </Typography>
-              <Typography variant="h6" color="text.secondary" paragraph sx={{ mb: 2 }}>
+              <Typography variant="subtitle1" color="text.secondary" paragraph sx={{ mb: 1.5, fontSize: '0.9rem' }}>
                 {personalInfo.subtitle}
               </Typography>
             </motion.div>
@@ -89,8 +89,8 @@ export default function HeroAboutSection() {
               <Paper
                 elevation={0}
                 sx={{
-                  p: { xs: 2, md: 3 },
-                  mb: 3,
+                  p: { xs: 1.5, md: 2 },
+                  mb: 2,
                   backgroundColor: 'background.paper',
                   borderRadius: 2,
                   border: '1px solid',
@@ -98,9 +98,9 @@ export default function HeroAboutSection() {
                 }}
               >
                 <Typography
-                  variant="body1"
+                  variant="body2"
                   color="text.primary"
-                  sx={{ lineHeight: 1.7, fontSize: { xs: '0.95rem', md: '1rem' } }}
+                  sx={{ lineHeight: 1.6, fontSize: { xs: '0.85rem', md: '0.9rem' } }}
                 >
                   {personalInfo.about.split('\n\n').map((paragraph, index) => (
                     <Box key={index} sx={{ mb: index === 0 ? 1.5 : 0 }}>
@@ -127,26 +127,26 @@ export default function HeroAboutSection() {
                 }}
               >
                 <Box sx={{ textAlign: 'center' }}>
-                  <Typography variant="h5" color="primary.main" fontWeight={700}>
+                  <Typography variant="h6" color="primary.main" fontWeight={700} sx={{ fontSize: '1.1rem' }}>
                     {personalInfo.gpa}
                   </Typography>
-                  <Typography variant="caption" color="text.secondary">
+                  <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.75rem' }}>
                     GPA
                   </Typography>
                 </Box>
                 <Box sx={{ textAlign: 'center' }}>
-                  <Typography variant="h5" color="primary.main" fontWeight={700}>
+                  <Typography variant="h6" color="primary.main" fontWeight={700} sx={{ fontSize: '1.1rem' }}>
                     2+
                   </Typography>
-                  <Typography variant="caption" color="text.secondary">
+                  <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.75rem' }}>
                     Years at CMU
                   </Typography>
                 </Box>
                 <Box sx={{ textAlign: 'center' }}>
-                  <Typography variant="h5" color="primary.main" fontWeight={700}>
+                  <Typography variant="h6" color="primary.main" fontWeight={700} sx={{ fontSize: '1.1rem' }}>
                     9+
                   </Typography>
-                  <Typography variant="caption" color="text.secondary">
+                  <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.75rem' }}>
                     Projects
                   </Typography>
                 </Box>
@@ -169,16 +169,17 @@ export default function HeroAboutSection() {
                 }}
               >
                 <ScrollLink to="projects" smooth={true} duration={500} offset={-70}>
-                  <Button variant="contained" size="medium">
+                  <Button variant="contained" size="small" sx={{ fontSize: '0.875rem' }}>
                     View My Work
                   </Button>
                 </ScrollLink>
                 <Button
                   variant="outlined"
-                  size="medium"
+                  size="small"
                   href={personalInfo.socialLinks.resume}
                   target="_blank"
                   rel="noopener noreferrer"
+                  sx={{ fontSize: '0.875rem' }}
                 >
                   Download Resume
                 </Button>

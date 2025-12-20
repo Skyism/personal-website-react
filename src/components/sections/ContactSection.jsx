@@ -11,18 +11,19 @@ export default function ContactSection() {
     <Box
       id="contact"
       sx={{
-        py: 8,
+        py: 5,
         backgroundColor: 'background.default',
       }}
     >
       <Container maxWidth="lg">
         <AnimatedSection>
           <Typography
-            variant="h2"
+            variant="h3"
             gutterBottom
             textAlign="center"
             sx={{
-              mb: 2,
+              mb: 1.5,
+              fontSize: { xs: '1.5rem', md: '1.75rem' },
               background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
@@ -31,33 +32,33 @@ export default function ContactSection() {
             Let's Connect
           </Typography>
           <Typography
-            variant="body1"
+            variant="body2"
             color="text.secondary"
             textAlign="center"
-            sx={{ mb: 6 }}
+            sx={{ mb: 4, fontSize: '0.875rem' }}
           >
             I'm always open to new opportunities and collaborations
           </Typography>
         </AnimatedSection>
 
-        <Grid container spacing={4}>
+        <Grid container spacing={3}>
           <Grid item xs={12} md={6}>
             <AnimatedSection delay={0.2}>
               <Paper
                 elevation={0}
                 sx={{
-                  p: 4,
+                  p: 3,
                   backgroundColor: 'background.paper',
-                  borderRadius: 3,
+                  borderRadius: 2,
                   border: '1px solid',
                   borderColor: 'divider',
                   height: '100%',
                 }}
               >
-                <Typography variant="h5" fontWeight={600} gutterBottom>
+                <Typography variant="h6" fontWeight={600} gutterBottom sx={{ fontSize: '1rem' }}>
                   Get in Touch
                 </Typography>
-                <Typography variant="body2" color="text.secondary" paragraph>
+                <Typography variant="body2" color="text.secondary" paragraph sx={{ fontSize: '0.85rem' }}>
                   Feel free to reach out for opportunities, collaborations, or just to
                   say hi!
                 </Typography>
@@ -67,9 +68,9 @@ export default function ContactSection() {
                     sx={{
                       display: 'flex',
                       alignItems: 'center',
-                      gap: 2,
-                      mb: 2,
-                      p: 2,
+                      gap: 1.5,
+                      mb: 1.5,
+                      p: 1.5,
                       borderRadius: 2,
                       transition: 'all 0.3s ease',
                       '&:hover': {
@@ -80,12 +81,12 @@ export default function ContactSection() {
                       },
                     }}
                   >
-                    <EmailIcon sx={{ color: 'primary.main' }} />
+                    <EmailIcon sx={{ color: 'primary.main', fontSize: 20 }} />
                     <Box>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.8rem' }}>
                         Email
                       </Typography>
-                      <Typography variant="body1" fontWeight={500}>
+                      <Typography variant="body2" fontWeight={500} sx={{ fontSize: '0.85rem' }}>
                         {personalInfo.email}
                       </Typography>
                     </Box>
@@ -95,8 +96,8 @@ export default function ContactSection() {
                     sx={{
                       display: 'flex',
                       alignItems: 'center',
-                      gap: 2,
-                      p: 2,
+                      gap: 1.5,
+                      p: 1.5,
                       borderRadius: 2,
                       transition: 'all 0.3s ease',
                       '&:hover': {
@@ -107,12 +108,12 @@ export default function ContactSection() {
                       },
                     }}
                   >
-                    <LocationOnIcon sx={{ color: 'primary.main' }} />
+                    <LocationOnIcon sx={{ color: 'primary.main', fontSize: 20 }} />
                     <Box>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.8rem' }}>
                         Location
                       </Typography>
-                      <Typography variant="body1" fontWeight={500}>
+                      <Typography variant="body2" fontWeight={500} sx={{ fontSize: '0.85rem' }}>
                         {personalInfo.location}
                       </Typography>
                     </Box>
@@ -127,9 +128,9 @@ export default function ContactSection() {
               <Paper
                 elevation={0}
                 sx={{
-                  p: 4,
+                  p: 3,
                   backgroundColor: 'background.paper',
-                  borderRadius: 3,
+                  borderRadius: 2,
                   border: '1px solid',
                   borderColor: 'divider',
                   height: '100%',
@@ -138,37 +139,37 @@ export default function ContactSection() {
                   justifyContent: 'center',
                 }}
               >
-                <Typography variant="h5" fontWeight={600} gutterBottom>
+                <Typography variant="h6" fontWeight={600} gutterBottom sx={{ fontSize: '1rem' }}>
                   Connect With Me
                 </Typography>
-                <Typography variant="body2" color="text.secondary" paragraph>
+                <Typography variant="body2" color="text.secondary" paragraph sx={{ fontSize: '0.85rem' }}>
                   Find me on these platforms
                 </Typography>
 
-                <Box sx={{ my: 4 }}>
-                  <SocialLinks direction="column" spacing={2} />
+                <Box sx={{ my: 2.5 }}>
+                  <SocialLinks direction="column" spacing={1.5} />
                 </Box>
 
                 <Button
                   variant="contained"
-                  size="large"
+                  size="medium"
                   startIcon={<DescriptionIcon />}
                   href={personalInfo.socialLinks.resume}
                   target="_blank"
                   rel="noopener noreferrer"
                   fullWidth
-                  sx={{ mt: 2 }}
+                  sx={{ mt: 1.5, fontSize: '0.875rem' }}
                 >
                   Download Resume
                 </Button>
 
                 <Button
                   variant="outlined"
-                  size="large"
+                  size="medium"
                   startIcon={<EmailIcon />}
                   href={`mailto:${personalInfo.email}`}
                   fullWidth
-                  sx={{ mt: 2 }}
+                  sx={{ mt: 1.5, fontSize: '0.875rem' }}
                 >
                   Send an Email
                 </Button>

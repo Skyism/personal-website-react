@@ -61,7 +61,7 @@ export default function HeroSection() {
                 mb: 2,
               }}
             >
-              Hi, I'm {personalInfo.name.split(' ')[0]}
+              Hi, I'm {personalInfo.name.split(' ')[0]}, interested in AI, cloud, and full-stack.
             </Typography>
           </motion.div>
 

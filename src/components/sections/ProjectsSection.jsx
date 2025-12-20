@@ -31,13 +31,14 @@ export default function ProjectsSection() {
   };
 
   return (
-    <Box id="projects" sx={{ py: 8, backgroundColor: 'background.default' }}>
+    <Box id="projects" sx={{ py: 5, backgroundColor: 'background.default' }}>
       <Container maxWidth="lg">
         <AnimatedSection>
-          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, mb: 2 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, mb: 1.5 }}>
             <Typography
-              variant="h2"
+              variant="h3"
               sx={{
+                fontSize: { xs: '1.5rem', md: '1.75rem' },
                 background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
@@ -57,10 +58,10 @@ export default function ProjectsSection() {
             </IconButton>
           </Box>
           <Typography
-            variant="body1"
+            variant="body2"
             color="text.secondary"
             textAlign="center"
-            sx={{ mb: 4 }}
+            sx={{ mb: 3, fontSize: '0.875rem' }}
           >
             Explore my work in full-stack development, machine learning, and more
           </Typography>
@@ -78,7 +79,7 @@ export default function ProjectsSection() {
                   '& .MuiTab-root': {
                     textTransform: 'none',
                     fontWeight: 600,
-                    fontSize: '1rem',
+                    fontSize: '0.875rem',
                   },
                 }}
               >

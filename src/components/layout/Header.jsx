@@ -99,6 +99,7 @@ export default function Header() {
               textDecoration: 'none',
               color: 'inherit',
               fontWeight: 600,
+              fontSize: '1rem',
               background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
@@ -122,6 +123,7 @@ export default function Header() {
                     <Button
                       sx={{
                         color: 'text.primary',
+                        fontSize: '0.875rem',
                         '&:hover': {
                           color: 'primary.main',
                         },
