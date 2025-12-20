@@ -60,4 +60,30 @@ export const experiences = [
       description: 'Collaborative teaching environment with 40+ TAs',
     },
   },
+  {
+    id: 'cmu-ra',
+    title: 'Resident Assistant',
+    company: 'Carnegie Mellon University',
+    location: 'Pittsburgh, PA',
+    period: 'May 2025 - Present',
+    current: true,
+    type: 'work',
+    description: 'Supporting residential community through crisis management, conflict resolution, and student support',
+    responsibilities: [
+      'Coordinated with 100+ member residential staff to resolve student conflicts and mental health emergencies, implementing strategic communication protocols that effectively supported 3000+ students',
+      'Execute accurate decision making during high-stress emergency situations by clearly communicating with emergency services and calmly assisting students',
+    ],
+    technologies: [
+      'Crisis Management',
+      'Leadership',
+      'Adapting',
+      'Mediation',
+      'Communication',
+      'Emergency Response',
+    ],
+    impact: {
+      metric: '3000+ students supported',
+      description: 'Coordinated with 100+ member residential staff',
+    },
+  },
 ];

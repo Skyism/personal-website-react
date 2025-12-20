@@ -2,7 +2,6 @@ import { Box, Container, Typography, Button, Paper, Grid } from '@mui/material';
 import AnimatedSection from '../ui/AnimatedSection';
 import SocialLinks from '../ui/SocialLinks';
 import EmailIcon from '@mui/icons-material/Email';
-import PhoneIcon from '@mui/icons-material/Phone';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import DescriptionIcon from '@mui/icons-material/Description';
 import { personalInfo } from '../../data/personal';
@@ -88,34 +87,6 @@ export default function ContactSection() {
                       </Typography>
                       <Typography variant="body1" fontWeight={500}>
                         {personalInfo.email}
-                      </Typography>
-                    </Box>
-                  </Box>
-
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 2,
-                      mb: 2,
-                      p: 2,
-                      borderRadius: 2,
-                      transition: 'all 0.3s ease',
-                      '&:hover': {
-                        backgroundColor: (theme) =>
-                          theme.palette.mode === 'light'
-                            ? 'rgba(156, 39, 176, 0.05)'
-                            : 'rgba(171, 71, 188, 0.1)',
-                      },
-                    }}
-                  >
-                    <PhoneIcon sx={{ color: 'primary.main' }} />
-                    <Box>
-                      <Typography variant="body2" color="text.secondary">
-                        Phone
-                      </Typography>
-                      <Typography variant="body1" fontWeight={500}>
-                        {personalInfo.phone}
                       </Typography>
                     </Box>
                   </Box>

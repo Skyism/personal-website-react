@@ -1,4 +1,4 @@
-import { Box, Container, Typography, Grid } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import AnimatedSection from '../ui/AnimatedSection';
 import ExperienceCard from '../cards/ExperienceCard';
 import { experiences } from '../../data/experiences';
@@ -23,15 +23,13 @@ export default function ExperienceSection() {
           </Typography>
         </AnimatedSection>
 
-        <Grid container spacing={4}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
           {experiences.map((experience, index) => (
-            <Grid item xs={12} key={experience.id}>
-              <AnimatedSection delay={index * 0.1}>
-                <ExperienceCard experience={experience} />
-              </AnimatedSection>
-            </Grid>
+            <AnimatedSection key={experience.id} delay={index * 0.1}>
+              <ExperienceCard experience={experience} />
+            </AnimatedSection>
           ))}
-        </Grid>
+        </Box>
       </Container>
     </Box>
   );

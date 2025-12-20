@@ -1,6 +1,5 @@
 import { Box } from '@mui/material';
-import HeroSection from '../components/sections/HeroSection';
-import AboutSection from '../components/sections/AboutSection';
+import HeroAboutSection from '../components/sections/HeroAboutSection';
 import ExperienceSection from '../components/sections/ExperienceSection';
 import ProjectsSection from '../components/sections/ProjectsSection';
 import ResearchSection from '../components/sections/ResearchSection';
@@ -11,14 +10,13 @@ import ContactSection from '../components/sections/ContactSection';
 export default function Home() {
   return (
     <Box>
-      <HeroSection />
-      <AboutSection />
+      <HeroAboutSection />
       <ExperienceSection />
       <ProjectsSection />
       <ResearchSection />
-      <LeadershipSection />
-      <EducationSection />
-      <ContactSection />
+      {/* <LeadershipSection /> */}
+      {/* <EducationSection /> */}
+      {/* <ContactSection /> */}
     </Box>
   );
 }

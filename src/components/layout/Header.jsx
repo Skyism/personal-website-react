@@ -104,7 +104,7 @@ export default function Header() {
               WebkitTextFillColor: 'transparent',
             }}
           >
-            Jeffrey Shen
+            :{">"}jshen
           </Typography>
 
           {!isMobile && (

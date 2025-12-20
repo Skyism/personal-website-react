@@ -31,7 +31,7 @@ export default function Footer() {
               Jeffrey Shen
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Computer Science @ Carnegie Mellon University
+              CS / ECE @ Carnegie Mellon University
             </Typography>
             <Typography variant="body2" color="text.secondary">
               © {currentYear} Jeffrey Shen. All rights reserved.
