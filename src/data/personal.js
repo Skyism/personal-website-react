@@ -1,6 +1,6 @@
 export const personalInfo = {
   name: 'Jeffrey Shen',
-  title: 'CS / ECE',
+  title: 'CS / ECE (website is W.I.P)',
   subtitle: 'Carnegie Mellon University',
   email: 'yshenjeffrey@gmail.com',
   phone: '678-557-1821',
