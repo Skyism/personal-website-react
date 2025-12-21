@@ -26,6 +26,12 @@ export default function ProjectsSection() {
     return 0;
   });
 
+  // Split projects into 3 tiers for masonry layout
+  const featuredProjects = sortedProjects.filter(p => p.featured);
+  const nonFeatured = sortedProjects.filter(p => !p.featured);
+  const midTierProjects = nonFeatured.slice(0, 3);
+  const compactProjects = nonFeatured.slice(3);
+
   const toggleExpanded = () => {
     setExpanded(!expanded);
   };
@@ -37,11 +43,10 @@ export default function ProjectsSection() {
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, mb: 1.5 }}>
             <Typography
               variant="h3"
+              color="primary.main"
               sx={{
                 fontSize: { xs: '1.5rem', md: '1.75rem' },
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
+                fontWeight: 600,
               }}
             >
               Projects
@@ -92,15 +97,44 @@ export default function ProjectsSection() {
             </Box>
           </AnimatedSection>
 
-          <Grid container spacing={2}>
-            {sortedProjects.map((project, index) => (
-              <Grid item xs={12} sm={6} key={project.id}>
-                <AnimatedSection delay={index * 0.05}>
-                  <ProjectCard project={project} />
-                </AnimatedSection>
-              </Grid>
-            ))}
-          </Grid>
+          {/* Tier 1: Featured Projects */}
+          {featuredProjects.length > 0 && (
+            <Grid container spacing={2} alignItems="stretch">
+              {featuredProjects.map((project, index) => (
+                <Grid item xs={12} sm={6} md={4} key={project.id} sx={{ display: 'flex' }}>
+                  <AnimatedSection delay={index * 0.1} sx={{ width: '100%' }}>
+                    <ProjectCard project={project} variant="featured" />
+                  </AnimatedSection>
+                </Grid>
+              ))}
+            </Grid>
+          )}
+
+          {/* Tier 2: Mid-Tier Projects */}
+          {midTierProjects.length > 0 && (
+            <Grid container spacing={2} alignItems="stretch" sx={{ mt: 2 }}>
+              {midTierProjects.map((project, index) => (
+                <Grid item xs={12} sm={6} md={4} key={project.id} sx={{ display: 'flex' }}>
+                  <AnimatedSection delay={0.3 + index * 0.1} sx={{ width: '100%' }}>
+                    <ProjectCard project={project} variant="midTier" />
+                  </AnimatedSection>
+                </Grid>
+              ))}
+            </Grid>
+          )}
+
+          {/* Tier 3: Compact Projects */}
+          {compactProjects.length > 0 && (
+            <Grid container spacing={2} alignItems="stretch" sx={{ mt: 2 }}>
+              {compactProjects.map((project, index) => (
+                <Grid item xs={12} sm={6} md={4} key={project.id} sx={{ display: 'flex' }}>
+                  <AnimatedSection delay={0.6 + index * 0.1} sx={{ width: '100%' }}>
+                    <ProjectCard project={project} variant="compact" />
+                  </AnimatedSection>
+                </Grid>
+              ))}
+            </Grid>
+          )}
 
           {filteredProjects.length === 0 && (
             <AnimatedSection>

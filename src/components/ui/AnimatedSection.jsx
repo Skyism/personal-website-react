@@ -7,6 +7,7 @@ export default function AnimatedSection({
   delay = 0,
   direction = 'up',
   duration = 0.5,
+  sx = {},
 }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
@@ -41,6 +42,7 @@ export default function AnimatedSection({
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
       variants={variants}
+      style={{ width: sx.width || 'auto' }}
     >
       {children}
     </motion.div>

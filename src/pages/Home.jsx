@@ -14,10 +14,10 @@ export default function Home() {
       <HeroAboutSection />
       <SideQuestSection />
       <ExperienceSection />
+      <EducationSection />
       <ProjectsSection />
       <ResearchSection />
       {/* <LeadershipSection /> */}
-      {/* <EducationSection /> */}
       {/* <ContactSection /> */}
     </Box>
   );
