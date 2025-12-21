@@ -15,10 +15,10 @@ export const education = {
 
   allCourses: {
     inProgress: [
-      'Advanced Data Structures',
-      'Operating Systems',
-      'Machine Learning',
-      'Software Engineering',
+      'Cloud Computing',
+      'Parallel and Sequential Data Structures',
+      'Introduction to Machine Learning',
+      'Database Systems',
     ],
     completed: [
       'Data Structures & Algorithms',
