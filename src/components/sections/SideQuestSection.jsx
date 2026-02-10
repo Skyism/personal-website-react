@@ -8,8 +8,9 @@ export default function SideQuestSection() {
   const [expanded, setExpanded] = useState(false);
   const sideQuests = [
     { quest: 'hit masters on tft', progress: 65 },
-    { quest: 'reach flow state', progress: 67 },
-    { quest: 'find love', progress: 0 },
+    // { quest: 'reach flow state', progress: 50 },
+    // { quest: 'find love', progress: 0 },
+    { quest: "finish the hierarchy series", progress: 70 }
   ];
 
   const toggleExpanded = () => {
