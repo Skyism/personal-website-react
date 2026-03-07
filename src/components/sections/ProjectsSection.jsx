@@ -1,155 +1,184 @@
-import { Box, Container, Typography, Grid, Tabs, Tab, IconButton, Collapse } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { useState } from 'react';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import { useNavigate } from 'react-router-dom';
 import AnimatedSection from '../ui/AnimatedSection';
-import ProjectCard from '../cards/ProjectCard';
-import { projects, projectCategories } from '../../data/projects';
+import CodeSectionHeader, { SectionSeparator } from '../ui/CodeSectionHeader';
+import { projects } from '../../data/projects';
+
+const categoryIcons = {
+  PROFESSIONAL: '🗂️',
+  HACKATHON: '🏆',
+  PERSONAL: '🤖',
+  ACADEMIC: '📚',
+  ALL: '📁',
+};
+
+const getProjectIcon = (category) => {
+  const icons = {
+    PROFESSIONAL: '🗂️',
+    HACKATHON: '🏆',
+    PERSONAL: '🤖',
+    ACADEMIC: '📚',
+  };
+  return icons[category] || '📝';
+};
 
 export default function ProjectsSection() {
   const [selectedCategory, setSelectedCategory] = useState('ALL');
-  const [expanded, setExpanded] = useState(false);
-
-  const handleCategoryChange = (event, newValue) => {
-    setSelectedCategory(newValue);
-  };
+  const navigate = useNavigate();
 
   const filteredProjects =
     selectedCategory === 'ALL'
       ? projects
       : projects.filter((project) => project.category === selectedCategory);
 
-  // Show featured projects first
-  const sortedProjects = [...filteredProjects].sort((a, b) => {
-    if (a.featured && !b.featured) return -1;
-    if (!a.featured && b.featured) return 1;
-    return 0;
-  });
-
-  // Split projects into 3 tiers for masonry layout
-  const featuredProjects = sortedProjects.filter(p => p.featured);
-  const nonFeatured = sortedProjects.filter(p => !p.featured);
-  const midTierProjects = nonFeatured.slice(0, 3);
-  const compactProjects = nonFeatured.slice(3);
-
-  const toggleExpanded = () => {
-    setExpanded(!expanded);
-  };
+  const categories = ['ALL', 'PROFESSIONAL', 'HACKATHON', 'PERSONAL', 'ACADEMIC'];
 
   return (
-    <Box id="projects" sx={{ py: 5, backgroundColor: 'background.default' }}>
-      <Container maxWidth="lg">
-        <AnimatedSection>
-          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, mb: 1.5 }}>
-            <Typography
-              variant="h3"
-              color="primary.main"
-              sx={{
-                fontSize: { xs: '1.5rem', md: '1.75rem' },
-                fontWeight: 600,
-              }}
-            >
-              Projects
-            </Typography>
-            <IconButton
-              onClick={toggleExpanded}
-              sx={{
-                color: 'primary.main',
-                transition: 'transform 0.3s ease',
-                transform: expanded ? 'rotate(0deg)' : 'rotate(180deg)',
-              }}
-            >
-              {expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-            </IconButton>
-          </Box>
-          <Typography
-            variant="body2"
-            color="text.secondary"
-            textAlign="center"
-            sx={{ mb: 3, fontSize: '0.875rem' }}
-          >
-            Explore my work in full-stack development, machine learning, and more
-          </Typography>
-        </AnimatedSection>
+    <>
+      <SectionSeparator />
+      <Box id="projects" sx={{ marginBottom: '32px' }}>
+        <CodeSectionHeader
+          comment="/* projects */"
+          title="Projects"
+          subtitle="// ls ./projects/"
+        />
 
-        <Collapse in={expanded} timeout="auto">
-          <AnimatedSection delay={0.2}>
-            <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
-              <Tabs
-                value={selectedCategory}
-                onChange={handleCategoryChange}
-                variant="scrollable"
-                scrollButtons="auto"
+        {/* Category Tabs */}
+        <Box
+          sx={{
+            display: 'flex',
+            gap: 0,
+            borderBottom: '1px solid',
+            borderColor: 'divider',
+            marginBottom: 0,
+          }}
+        >
+          {categories.map((cat) => (
+            <Box
+              key={cat}
+              onClick={() => setSelectedCategory(cat)}
+              sx={{
+                padding: '6px 14px',
+                fontSize: '11px',
+                color: selectedCategory === cat ? 'text.primary' : 'text.secondary',
+                border: '1px solid',
+                borderColor: selectedCategory === cat ? 'divider' : 'transparent',
+                borderBottom: selectedCategory === cat ? 'none' : '1px solid',
+                borderBottomColor: selectedCategory === cat ? 'transparent' : 'divider',
+                backgroundColor: selectedCategory === cat
+                  ? (theme => theme.palette.mode === 'light' ? '#f5f5f5' : '#2a2a2a')
+                  : 'transparent',
+                fontFamily: 'monospace',
+                cursor: 'pointer',
+                '&:hover': {
+                  backgroundColor: theme => theme.palette.mode === 'light' ? '#f5f5f5' : '#2a2a2a',
+                },
+              }}
+            >
+              {categoryIcons[cat]} {cat === 'ALL' ? 'all/' : cat.toLowerCase() + '/'}
+            </Box>
+          ))}
+        </Box>
+
+        {/* File Explorer */}
+        <Box
+          sx={{
+            border: '1px solid',
+            borderColor: 'divider',
+            borderRadius: '4px',
+            backgroundColor: 'background.paper',
+            overflow: 'hidden',
+            marginTop: 0,
+          }}
+        >
+          <Box
+            sx={{
+              backgroundColor: theme => theme.palette.mode === 'light' ? '#ebebeb' : '#2a2a2a',
+              borderBottom: '1px solid',
+              borderColor: 'divider',
+              padding: '8px 12px',
+              fontFamily: 'monospace',
+              fontSize: '11px',
+              color: 'text.secondary',
+            }}
+          >
+            ~/projects/ — {filteredProjects.length} items
+          </Box>
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
+              gap: 0,
+            }}
+          >
+            {filteredProjects.map((project, index) => (
+              <Box
+                key={project.id}
+                onClick={() => navigate(`/projects/${project.slug}`)}
                 sx={{
-                  '& .MuiTab-root': {
-                    textTransform: 'none',
-                    fontWeight: 600,
-                    fontSize: '0.875rem',
+                  border: '1px solid',
+                  borderColor: 'divider',
+                  padding: '14px',
+                  cursor: 'pointer',
+                  transition: 'background 0.2s',
+                  backgroundColor: project.featured
+                    ? (theme => theme.palette.mode === 'light' ? '#f0f0f0' : '#2a2a2a')
+                    : 'transparent',
+                  '&:hover': {
+                    backgroundColor: theme => theme.palette.mode === 'light' ? '#f5f5f5' : '#333',
                   },
                 }}
               >
-                <Tab label="All Projects" value="ALL" />
-                <Tab label="Professional" value="PROFESSIONAL" />
-                <Tab label="Hackathon" value="HACKATHON" />
-                <Tab label="Personal" value="PERSONAL" />
-                <Tab label="Academic" value="ACADEMIC" />
-              </Tabs>
-            </Box>
-          </AnimatedSection>
-
-          {/* Tier 1: Featured Projects */}
-          {featuredProjects.length > 0 && (
-            <Grid container spacing={2} alignItems="stretch">
-              {featuredProjects.map((project, index) => (
-                <Grid item xs={12} sm={6} md={4} key={project.id} sx={{ display: 'flex' }}>
-                  <AnimatedSection delay={index * 0.1} sx={{ width: '100%' }}>
-                    <ProjectCard project={project} variant="featured" />
-                  </AnimatedSection>
-                </Grid>
-              ))}
-            </Grid>
-          )}
-
-          {/* Tier 2: Mid-Tier Projects */}
-          {midTierProjects.length > 0 && (
-            <Grid container spacing={2} alignItems="stretch" sx={{ mt: 2 }}>
-              {midTierProjects.map((project, index) => (
-                <Grid item xs={12} sm={6} md={4} key={project.id} sx={{ display: 'flex' }}>
-                  <AnimatedSection delay={0.3 + index * 0.1} sx={{ width: '100%' }}>
-                    <ProjectCard project={project} variant="midTier" />
-                  </AnimatedSection>
-                </Grid>
-              ))}
-            </Grid>
-          )}
-
-          {/* Tier 3: Compact Projects */}
-          {compactProjects.length > 0 && (
-            <Grid container spacing={2} alignItems="stretch" sx={{ mt: 2 }}>
-              {compactProjects.map((project, index) => (
-                <Grid item xs={12} sm={6} md={4} key={project.id} sx={{ display: 'flex' }}>
-                  <AnimatedSection delay={0.6 + index * 0.1} sx={{ width: '100%' }}>
-                    <ProjectCard project={project} variant="compact" />
-                  </AnimatedSection>
-                </Grid>
-              ))}
-            </Grid>
-          )}
-
-          {filteredProjects.length === 0 && (
-            <AnimatedSection>
-              <Typography
-                variant="h6"
-                color="text.secondary"
-                textAlign="center"
-                sx={{ mt: 4 }}
-              >
-                No projects found in this category.
-              </Typography>
-            </AnimatedSection>
-          )}
-        </Collapse>
-      </Container>
-    </Box>
+                <Typography
+                  sx={{
+                    fontSize: '20px',
+                    marginBottom: '6px',
+                  }}
+                >
+                  {getProjectIcon(project.category)}
+                </Typography>
+                <Typography
+                  sx={{
+                    fontFamily: 'monospace',
+                    fontSize: '11px',
+                    fontWeight: 'bold',
+                    color: 'text.primary',
+                    marginBottom: '3px',
+                  }}
+                >
+                  {project.title.split(':')[0].toLowerCase().replace(/\s+/g, '-')}/
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: '10px',
+                    color: 'text.secondary',
+                    lineHeight: 1.4,
+                    marginBottom: '4px',
+                  }}
+                >
+                  {project.shortDescription}
+                </Typography>
+                <Box
+                  sx={{
+                    display: 'inline-block',
+                    fontFamily: 'monospace',
+                    fontSize: '9px',
+                    color: 'text.secondary',
+                    border: '1px solid',
+                    borderColor: 'divider',
+                    borderRadius: '2px',
+                    padding: '1px 4px',
+                    marginTop: '4px',
+                  }}
+                >
+                  {project.category} {project.links?.live ? `· ${project.links.live.replace('https://', '')}` : ''}
+                </Box>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+      </Box>
+    </>
   );
 }
