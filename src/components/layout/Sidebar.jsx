@@ -31,7 +31,7 @@ export default function Sidebar() {
   return (
     <Box
       sx={{
-        width: 220,
+        width: 270,
         flexShrink: 0,
         borderRight: '1px solid',
         borderColor: 'divider',
@@ -46,7 +46,7 @@ export default function Sidebar() {
       {/* Profile Card */}
       <Box
         sx={{
-          padding: '0 16px 16px',
+          padding: '0 20px 16px',
           borderBottom: '1px dashed',
           borderColor: 'divider',
           marginBottom: '16px',
@@ -57,8 +57,8 @@ export default function Sidebar() {
           src={personalInfo.profileImage}
           alt={personalInfo.name}
           sx={{
-            width: 40,
-            height: 40,
+            width: 48,
+            height: 48,
             marginBottom: '8px',
             border: '1px solid',
             borderColor: 'divider',
@@ -66,7 +66,7 @@ export default function Sidebar() {
         />
         <Typography
           sx={{
-            fontSize: '12px',
+            fontSize: '14px',
             fontWeight: 'bold',
             color: 'text.primary',
             fontFamily: 'monospace',
@@ -76,7 +76,7 @@ export default function Sidebar() {
         </Typography>
         <Typography
           sx={{
-            fontSize: '10px',
+            fontSize: '12px',
             color: 'text.secondary',
             fontFamily: 'monospace',
           }}
@@ -85,7 +85,7 @@ export default function Sidebar() {
         </Typography>
         <Typography
           sx={{
-            fontSize: '10px',
+            fontSize: '12px',
             color: 'text.secondary',
             fontFamily: 'monospace',
             marginTop: '4px',
@@ -99,10 +99,10 @@ export default function Sidebar() {
       </Box>
 
       {/* Navigation */}
-      <Box sx={{ padding: '0 16px', marginBottom: '24px' }}>
+      <Box sx={{ padding: '0 20px', marginBottom: '24px' }}>
         <Typography
           sx={{
-            fontSize: '10px',
+            fontSize: '11px',
             textTransform: 'uppercase',
             letterSpacing: '2px',
             color: 'text.secondary',
@@ -131,7 +131,7 @@ export default function Sidebar() {
                 borderRadius: '4px',
                 marginBottom: '2px',
                 cursor: 'pointer',
-                fontSize: '12px',
+                fontSize: '13px',
                 color: 'text.secondary',
                 fontFamily: 'monospace',
                 '&:hover': {
@@ -151,10 +151,10 @@ export default function Sidebar() {
       </Box>
 
       {/* Status */}
-      <Box sx={{ padding: '0 16px', marginBottom: '24px' }}>
+      <Box sx={{ padding: '0 20px', marginBottom: '24px' }}>
         <Typography
           sx={{
-            fontSize: '10px',
+            fontSize: '11px',
             textTransform: 'uppercase',
             letterSpacing: '2px',
             color: 'text.secondary',
@@ -166,7 +166,7 @@ export default function Sidebar() {
         </Typography>
         <Box
           sx={{
-            fontSize: '11px',
+            fontSize: '12px',
             color: 'text.secondary',
             fontFamily: 'monospace',
             lineHeight: 1.9,
@@ -190,10 +190,10 @@ export default function Sidebar() {
       </Box>
 
       {/* Quick Stats */}
-      <Box sx={{ padding: '0 16px' }}>
+      <Box sx={{ padding: '0 20px' }}>
         <Typography
           sx={{
-            fontSize: '10px',
+            fontSize: '11px',
             textTransform: 'uppercase',
             letterSpacing: '2px',
             color: 'text.secondary',
@@ -205,7 +205,7 @@ export default function Sidebar() {
         </Typography>
         <Box
           sx={{
-            fontSize: '11px',
+            fontSize: '12px',
             color: 'text.secondary',
             fontFamily: 'monospace',
             lineHeight: 2,

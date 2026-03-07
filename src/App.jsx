@@ -29,7 +29,7 @@ function AppContent() {
         sx={{
           flexGrow: 1,
           display: 'flex',
-          maxWidth: '1080px',
+          maxWidth: '1280px',
           margin: '0 auto',
           width: '100%',
         }}

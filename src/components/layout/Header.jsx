@@ -120,7 +120,7 @@ export default function Header() {
       >
         <Box
           sx={{
-            maxWidth: '1080px',
+            maxWidth: '1280px',
             margin: '0 auto',
             padding: '0 24px',
             display: 'flex',
