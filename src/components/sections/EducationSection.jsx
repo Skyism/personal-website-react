@@ -1,7 +1,10 @@
+import { useState } from 'react';
 import { Box, Typography, Avatar } from '@mui/material';
 import { education } from '../../data/education';
+import CourseworkModal from './CourseworkModal';
 
 export default function EducationSection() {
+  const [modalOpen, setModalOpen] = useState(false);
   const relevantCourses = education.relevantCoursework || [];
 
   return (
@@ -86,12 +89,25 @@ export default function EducationSection() {
         >
           {relevantCourses.map((course, idx) => (
             <Box key={idx}>
-              {idx === relevantCourses.length - 1 ? '└─ ' : '├─ '}
+              {'├─ '}
               {course}
             </Box>
           ))}
+          <Box
+            onClick={() => setModalOpen(true)}
+            sx={{
+              cursor: 'pointer',
+              color: 'text.secondary',
+              '&:hover': { color: 'text.primary' },
+              transition: 'color 0.2s',
+            }}
+          >
+            └─ <Box component="span" sx={{ textDecoration: 'underline', textUnderlineOffset: '2px' }}>view all courses →</Box>
+          </Box>
         </Box>
       </Box>
+
+      <CourseworkModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </Box>
   );
 }
