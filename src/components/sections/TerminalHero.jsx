@@ -46,7 +46,7 @@ export default function TerminalHero() {
       const timer = setTimeout(() => {
         setDisplayedText(prev => prev + '\n');
         setCurrentLine(prev => prev + 1);
-      }, 200);
+      }, 100);
       return () => clearTimeout(timer);
     }
 
@@ -65,13 +65,13 @@ export default function TerminalHero() {
         charIndex++;
       } else {
         clearInterval(typeInterval);
-        const delay = currentLineData.type === 'command' ? 500 : 300;
+        const delay = currentLineData.type === 'command' ? 200 : 150;
         setTimeout(() => {
           setDisplayedText(prev => prev + '\n');
           setCurrentLine(prev => prev + 1);
         }, delay);
       }
-    }, currentLineData.type === 'command' ? 50 : 30);
+    }, currentLineData.type === 'command' ? 20 : 15);
 
     return () => clearInterval(typeInterval);
   }, [currentLine, isTyping]);
