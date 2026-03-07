@@ -1,73 +1,97 @@
-import { Box, Container, Typography, Chip, IconButton, Collapse } from '@mui/material';
-import { useState } from 'react';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import AnimatedSection from '../ui/AnimatedSection';
+import { Box, Typography, Avatar } from '@mui/material';
 import { education } from '../../data/education';
 
 export default function EducationSection() {
-  const [expanded, setExpanded] = useState(false);
-
-  const toggleExpanded = () => {
-    setExpanded(!expanded);
-  };
-
-  // Combine all courses
-  const allCourses = [
-    ...education.allCourses.inProgress.map(course => ({ name: course, inProgress: true })),
-    ...education.allCourses.completed.map(course => ({ name: course, inProgress: false })),
-  ];
+  const relevantCourses = education.relevantCoursework || [];
 
   return (
-    <Box id="education" sx={{ py: 5 }}>
-      <Container maxWidth="lg">
-        <AnimatedSection>
-          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, mb: 1.5 }}>
+    <Box id="education">
+      <Typography
+        sx={{
+          fontFamily: 'monospace',
+          fontSize: '12px',
+          color: 'text.secondary',
+          marginBottom: '8px',
+        }}
+      >
+        // education
+      </Typography>
+      <Box
+        sx={{
+          border: '1px solid',
+          borderColor: 'divider',
+          borderRadius: '4px',
+          backgroundColor: 'background.paper',
+          padding: '16px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '10px',
+        }}
+      >
+        <Box sx={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+          <Avatar
+            sx={{
+              width: 44,
+              height: 44,
+              backgroundColor: theme => theme.palette.mode === 'light' ? '#ddd' : '#444',
+              border: '1px solid',
+              borderColor: 'divider',
+              fontSize: '10px',
+              color: 'text.secondary',
+            }}
+          >
+            CMU
+          </Avatar>
+          <Box>
             <Typography
-              variant="h3"
-              color="primary.main"
+              component="h3"
               sx={{
-                fontSize: { xs: '1.5rem', md: '1.75rem' },
-                fontWeight: 600,
+                fontFamily: 'monospace',
+                fontSize: '12px',
+                fontWeight: 'bold',
+                color: 'text.primary',
               }}
             >
-              Coursework
+              {education.school}
             </Typography>
-            <IconButton
-              onClick={toggleExpanded}
+            <Typography
               sx={{
-                color: 'primary.main',
-                transition: 'transform 0.3s ease',
-                transform: expanded ? 'rotate(0deg)' : 'rotate(180deg)',
+                fontSize: '12px',
+                color: 'text.secondary',
+                marginTop: '3px',
               }}
             >
-              {expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-            </IconButton>
+              {education.degree} · {education.period}
+            </Typography>
+            <Typography
+              sx={{
+                fontSize: '12px',
+                color: 'text.primary',
+                fontWeight: 'bold',
+                marginTop: '3px',
+              }}
+            >
+              GPA: {education.gpa}
+            </Typography>
           </Box>
-        </AnimatedSection>
-
-        <Collapse in={expanded} timeout="auto">
-          <AnimatedSection delay={0.1}>
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, justifyContent: 'center' }}>
-              {allCourses.map((course) => (
-                <Chip
-                  key={course.name}
-                  label={course.name}
-                  size="small"
-                  variant={course.inProgress ? 'filled' : 'outlined'}
-                  sx={{
-                    fontSize: '0.75rem',
-                    height: 24,
-                    borderColor: 'primary.main',
-                    color: course.inProgress ? 'white' : 'primary.main',
-                    backgroundColor: course.inProgress ? 'primary.main' : 'transparent',
-                  }}
-                />
-              ))}
+        </Box>
+        <Box
+          sx={{
+            fontSize: '10px',
+            color: 'text.secondary',
+            lineHeight: 1.6,
+            fontFamily: 'monospace',
+            marginTop: '8px',
+          }}
+        >
+          {relevantCourses.map((course, idx) => (
+            <Box key={idx}>
+              {idx === relevantCourses.length - 1 ? '└─ ' : '├─ '}
+              {course}
             </Box>
-          </AnimatedSection>
-        </Collapse>
-      </Container>
+          ))}
+        </Box>
+      </Box>
     </Box>
   );
 }

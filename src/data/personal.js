@@ -20,5 +20,5 @@ I'm constantly exploring new technologies and challenging myself, staying curiou
     resume: '/assets/documents/Yinchu_Shen_Resume.pdf',
   },
 
-  profileImage: '/assets/images/LinkedFinal.jpg',
+  profileImage: '/assets/images/prof_photo.JPG',
 };

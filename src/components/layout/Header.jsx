@@ -1,10 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Button,
   Box,
   IconButton,
   Drawer,
@@ -22,28 +18,37 @@ import ThemeToggle from '../ui/ThemeToggle';
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState('about');
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const location = useLocation();
   const isHomePage = location.pathname === '/';
+
+  // Set active tab based on hash or default to 'about'
+  useEffect(() => {
+    if (location.hash) {
+      setActiveTab(location.hash.substring(1));
+    } else if (isHomePage) {
+      setActiveTab('about');
+    }
+  }, [location.hash, isHomePage]);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
   const navItems = [
-    { label: 'About', id: 'about' },
-    { label: 'Experience', id: 'experience' },
-    { label: 'Projects', id: 'projects' },
-    { label: 'Research', id: 'research' },
-    { label: 'Education', id: 'education' },
-    { label: 'Contact', id: 'contact' },
+    { label: 'about', id: 'about' },
+    { label: 'experience', id: 'experience' },
+    { label: 'projects', id: 'projects' },
+    { label: 'research', id: 'research' },
+    { label: 'education', id: 'education' },
   ];
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 2 }}>
-        <IconButton>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', pt: 2 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end', px: 2 }}>
+        <IconButton onClick={handleDrawerToggle}>
           <CloseIcon />
         </IconButton>
       </Box>
@@ -57,9 +62,20 @@ export default function Header() {
                 smooth={true}
                 offset={-70}
                 duration={500}
+                onSetActive={() => setActiveTab(item.id)}
                 style={{ width: '100%', textDecoration: 'none', color: 'inherit' }}
               >
-                <ListItemButton sx={{ textAlign: 'center' }}>
+                <ListItemButton
+                  sx={{
+                    textAlign: 'center',
+                    fontFamily: 'monospace',
+                    '&::before': {
+                      content: '">"',
+                      color: 'text.secondary',
+                      marginRight: '4px',
+                    },
+                  }}
+                >
                   <ListItemText primary={item.label} />
                 </ListItemButton>
               </ScrollLink>
@@ -67,7 +83,15 @@ export default function Header() {
               <ListItemButton
                 component={RouterLink}
                 to={`/#${item.id}`}
-                sx={{ textAlign: 'center' }}
+                sx={{
+                  textAlign: 'center',
+                  fontFamily: 'monospace',
+                  '&::before': {
+                    content: '">"',
+                    color: 'text.secondary',
+                    marginRight: '4px',
+                  },
+                }}
               >
                 <ListItemText primary={item.label} />
               </ListItemButton>
@@ -80,91 +104,134 @@ export default function Header() {
 
   return (
     <>
-      <AppBar
-        position="sticky"
-        elevation={2}
+      <Box
+        component="header"
         sx={{
+          position: 'sticky',
+          top: 0,
+          zIndex: 200,
           backgroundColor: 'background.paper',
-          color: 'text.primary',
-          backdropFilter: 'blur(10px)',
+          borderBottom: '2px solid',
+          borderColor: 'text.primary',
+          height: 52,
+          display: 'flex',
+          alignItems: 'center',
         }}
       >
-        <Toolbar>
-          <Typography
-            variant="h6"
+        <Box
+          sx={{
+            maxWidth: '1080px',
+            margin: '0 auto',
+            padding: '0 24px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 0,
+            width: '100%',
+          }}
+        >
+          <Box
             component={RouterLink}
             to="/"
             sx={{
-              flexGrow: 1,
+              fontFamily: 'monospace',
+              fontSize: '17px',
+              fontWeight: 'bold',
+              color: 'text.primary',
+              marginRight: '32px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px',
               textDecoration: 'none',
-              color: 'inherit',
-              fontWeight: 600,
-              fontSize: '1rem',
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
             }}
           >
-            :{">"}jshen
-          </Typography>
+            &gt;_ <Box component="span" sx={{ fontFamily: 'monospace' }}>jshen</Box>
+            <Box
+              component="span"
+              sx={{
+                width: '9px',
+                height: '16px',
+                backgroundColor: 'text.secondary',
+                display: 'inline-block',
+                marginLeft: '2px',
+                animation: 'blink 1s step-end infinite',
+                '@keyframes blink': {
+                  '50%': { opacity: 0 },
+                },
+              }}
+            />
+          </Box>
 
           {!isMobile && (
-            <Box sx={{ display: 'flex', gap: 1, mr: 2 }}>
-              {navItems.map((item) =>
-                isHomePage ? (
-                  <ScrollLink
-                    key={item.id}
-                    to={item.id}
-                    spy={true}
-                    smooth={true}
-                    offset={-70}
-                    duration={500}
-                  >
-                    <Button
-                      sx={{
-                        color: 'text.primary',
-                        fontSize: '0.875rem',
-                        '&:hover': {
-                          color: 'primary.main',
-                        },
-                      }}
-                    >
-                      {item.label}
-                    </Button>
-                  </ScrollLink>
-                ) : (
-                  <Button
-                    key={item.id}
-                    component={RouterLink}
-                    to={`/#${item.id}`}
+            <Box
+              sx={{
+                display: 'flex',
+                gap: 0,
+                flex: 1,
+                height: 52,
+              }}
+            >
+              {navItems.map((item) => (
+                <ScrollLink
+                  key={item.id}
+                  to={item.id}
+                  spy={true}
+                  smooth={true}
+                  offset={-70}
+                  duration={500}
+                  onSetActive={() => setActiveTab(item.id)}
+                  style={{ textDecoration: 'none' }}
+                >
+                  <Box
                     sx={{
-                      color: 'text.primary',
+                      display: 'flex',
+                      alignItems: 'center',
+                      padding: '0 18px',
+                      fontSize: '12px',
+                      color: activeTab === item.id ? 'text.primary' : 'text.secondary',
+                      borderRight: '1px solid',
+                      borderColor: 'divider',
+                      cursor: 'pointer',
+                      fontFamily: 'monospace',
+                      borderBottom: activeTab === item.id ? '3px solid' : '3px solid transparent',
+                      borderBottomColor: activeTab === item.id ? 'text.primary' : 'transparent',
+                      backgroundColor: activeTab === item.id
+                        ? (theme.palette.mode === 'light' ? '#f8f8f8' : '#2a2a2a')
+                        : 'transparent',
+                      height: '100%',
                       '&:hover': {
-                        color: 'primary.main',
+                        backgroundColor: theme.palette.mode === 'light' ? '#f8f8f8' : '#2a2a2a',
+                      },
+                      '&::before': {
+                        content: '"./"',
+                        color: 'text.secondary',
+                        fontSize: '11px',
+                        marginRight: '2px',
                       },
                     }}
                   >
                     {item.label}
-                  </Button>
-                )
-              )}
+                  </Box>
+                </ScrollLink>
+              ))}
             </Box>
           )}
 
-          <ThemeToggle />
-
-          {isMobile && (
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="start"
-              onClick={handleDrawerToggle}
-            >
-              <MenuIcon />
-            </IconButton>
-          )}
-        </Toolbar>
-      </AppBar>
+          <Box sx={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <ThemeToggle />
+            {isMobile && (
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="start"
+                onClick={handleDrawerToggle}
+                sx={{ ml: 1 }}
+              >
+                <MenuIcon />
+              </IconButton>
+            )}
+          </Box>
+        </Box>
+      </Box>
 
       <Drawer
         anchor="right"
@@ -175,7 +242,12 @@ export default function Header() {
         }}
         sx={{
           display: { xs: 'block', md: 'none' },
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240 },
+          '& .MuiDrawer-paper': {
+            boxSizing: 'border-box',
+            width: 240,
+            backgroundColor: 'background.paper',
+            fontFamily: 'monospace',
+          },
         }}
       >
         {drawer}

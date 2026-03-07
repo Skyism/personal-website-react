@@ -1,24 +1,33 @@
 import { Box } from '@mui/material';
-import HeroAboutSection from '../components/sections/HeroAboutSection';
 import ExperienceSection from '../components/sections/ExperienceSection';
 import ProjectsSection from '../components/sections/ProjectsSection';
 import ResearchSection from '../components/sections/ResearchSection';
 import SideQuestSection from '../components/sections/SideQuestSection';
-import LeadershipSection from '../components/sections/LeadershipSection';
 import EducationSection from '../components/sections/EducationSection';
-import ContactSection from '../components/sections/ContactSection';
+import TerminalHero from '../components/sections/TerminalHero';
+import SkillsSection from '../components/sections/SkillsSection';
+import { SectionSeparator } from '../components/ui/CodeSectionHeader';
 
 export default function Home() {
   return (
-    <Box>
-      <HeroAboutSection />
-      <SideQuestSection />
+    <>
+      <TerminalHero />
       <ExperienceSection />
-      <EducationSection />
       <ProjectsSection />
       <ResearchSection />
-      {/* <LeadershipSection /> */}
-      {/* <ContactSection /> */}
-    </Box>
+      <SectionSeparator />
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: { xs: '1fr', md: '1fr 1fr 1fr' },
+          gap: '20px',
+          marginBottom: '32px',
+        }}
+      >
+        <EducationSection />
+        <SkillsSection />
+        <SideQuestSection />
+      </Box>
+    </>
   );
 }
