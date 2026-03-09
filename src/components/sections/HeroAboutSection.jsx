@@ -173,16 +173,6 @@ export default function HeroAboutSection() {
                     View My Work
                   </Button>
                 </ScrollLink>
-                <Button
-                  variant="outlined"
-                  size="small"
-                  href={personalInfo.socialLinks.resume}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  sx={{ fontSize: '0.875rem' }}
-                >
-                  Download Resume
-                </Button>
               </Box>
             </motion.div>
 

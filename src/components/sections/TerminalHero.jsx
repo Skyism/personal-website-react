@@ -291,30 +291,6 @@ export default function TerminalHero() {
             ./view-work.sh
           </Button>
         </ScrollLink>
-        <Button
-          variant="outlined"
-          href={personalInfo.socialLinks.resume}
-          target="_blank"
-          rel="noopener noreferrer"
-          sx={{
-            padding: '8px 20px',
-            border: '2px solid',
-            borderColor: 'text.secondary',
-            backgroundColor: 'transparent',
-            color: 'text.secondary',
-            borderRadius: '4px',
-            fontSize: '12px',
-            fontFamily: 'monospace',
-            textTransform: 'none',
-            '&:hover': {
-              borderColor: 'text.primary',
-              color: 'text.primary',
-              backgroundColor: 'transparent',
-            },
-          }}
-        >
-          cat resume.pdf
-        </Button>
       </Box>
     </Box>
   );

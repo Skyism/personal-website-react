@@ -3,7 +3,6 @@ import AnimatedSection from '../ui/AnimatedSection';
 import SocialLinks from '../ui/SocialLinks';
 import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import DescriptionIcon from '@mui/icons-material/Description';
 import { personalInfo } from '../../data/personal';
 
 export default function ContactSection() {
@@ -149,19 +148,6 @@ export default function ContactSection() {
                 <Box sx={{ my: 2.5 }}>
                   <SocialLinks direction="column" spacing={1.5} />
                 </Box>
-
-                <Button
-                  variant="contained"
-                  size="medium"
-                  startIcon={<DescriptionIcon />}
-                  href={personalInfo.socialLinks.resume}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  fullWidth
-                  sx={{ mt: 1.5, fontSize: '0.875rem' }}
-                >
-                  Download Resume
-                </Button>
 
                 <Button
                   variant="outlined"

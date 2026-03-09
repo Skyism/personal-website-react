@@ -2,7 +2,6 @@ import { IconButton, Tooltip, Box } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
-import DescriptionIcon from '@mui/icons-material/Description';
 
 export default function SocialLinks({ direction = 'row', spacing = 1 }) {
   const socialLinks = [
@@ -20,11 +19,6 @@ export default function SocialLinks({ direction = 'row', spacing = 1 }) {
       name: 'Email',
       icon: <EmailIcon />,
       url: 'mailto:yshenjeffrey@gmail.com',
-    },
-    {
-      name: 'Resume',
-      icon: <DescriptionIcon />,
-      url: '/assets/documents/Yinchu_Shen_Resume.pdf',
     },
   ];
 
