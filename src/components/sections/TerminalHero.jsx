@@ -14,7 +14,7 @@ export default function TerminalHero() {
     { type: 'command', text: 'jshen@cmu:~$ cat README.md' },
     { type: 'blank' },
     { type: 'output', text: `# ${personalInfo.name}` },
-    { type: 'output', text: `${personalInfo.subtitle} (Class of ${personalInfo.graduationDate.split(' ')[1]})` },
+    { type: 'output', text: `${personalInfo.subtitle}` },
     { type: 'blank' },
     { type: 'output', text: '## About' },
     { type: 'output', text: personalInfo.about.split('\n\n')[0] },

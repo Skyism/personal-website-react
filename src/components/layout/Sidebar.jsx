@@ -214,7 +214,6 @@ export default function Sidebar() {
           <Box>GPA: <strong>{personalInfo.gpa}</strong></Box>
           <Box>Projects: <strong>{projectCount}+</strong></Box>
           <Box>Users: <strong>500+</strong></Box>
-          <Box>Grad: <strong>{personalInfo.graduationDate}</strong></Box>
         </Box>
       </Box>
     </Box>
