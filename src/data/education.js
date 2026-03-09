@@ -3,8 +3,7 @@ export const education = {
   school: 'Carnegie Mellon University',
   location: 'Pittsburgh, PA',
   gpa: '4.0/4.0',
-  graduationDate: 'May 2028',
-  period: '2024 - 2028',
+  period: '2024 - Present',
 
   relevantCoursework: [
     'Data Structures & Algorithms',
