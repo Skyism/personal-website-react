@@ -7,7 +7,7 @@ export const personalInfo = {
   location: 'Pittsburgh, PA',
   gpa: '4.0/4.0',
 
-  about: `Hi I'm a CS/ECE student at CMU, a 15-122 (DSA) TA, HackCMU winner, and driven learner. I believe software can change the world for the better.
+  about: `Hi I'm a Computer Science student at CMU, a 15-122 (DSA) TA, HackCMU winner, and driven learner. I believe software can change the world for the better.
 
 I'm constantly exploring new technologies and challenging myself, staying curious and always learning.`,
 
